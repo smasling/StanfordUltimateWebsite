@@ -1,0 +1,163 @@
+
+  {
+    "Sam Masling": {
+      "name": "Sam Masling",
+      "entries": [
+        {
+          "date": "8/21/19",
+          "excercises":
+            {
+              "0": {
+                "name": "Pushups",
+                "weight": "Body weight",
+                "sets": "4",
+                "reps": "15"
+              }
+            ,
+
+              "1": {
+                "name": "Bench Press",
+                "weight": "135",
+                "sets": "3",
+                "reps": "4"
+              }
+            ,
+
+              "2": {
+                "name": "Tricep Kickbacks",
+                "weight": "35",
+                "sets": "3",
+                "reps": "8"
+              }
+            ,
+
+              "3": {
+                "name": "Skull Crushers",
+                "weight": "45",
+                "sets": "3",
+                "reps": "6"
+              }
+
+            }
+        },
+        {
+          "date": "8/17/19",
+          "excercises":
+            {
+              "0": {
+                "name": "Pushups",
+                "weight": "Body weight",
+                "sets": "4",
+                "reps": "15"
+              }
+            ,
+
+              "1": {
+                "name": "Bench Press",
+                "weight": "135",
+                "sets": "3",
+                "reps": "4"
+              }
+            ,
+
+              "2": {
+                "name": "Tricep Kickbacks",
+                "weight": "35",
+                "sets": "3",
+                "reps": "8"
+              }
+            ,
+
+              "3": {
+                "name": "Skull Crushers",
+                "weight": "45",
+                "sets": "3",
+                "reps": "6"
+              }
+            }
+
+        }
+      ]
+    },
+
+
+    "Ryan Ressemeyer" : {
+    "entries": [
+      {
+        "date": "8/21/19",
+        "excercises":
+          {
+            "0": {
+              "name": "Pushups",
+              "weight": "Body weight",
+              "sets": "4",
+              "reps": "15"
+            }
+          ,
+
+            "1": {
+              "name": "Bench Press",
+              "weight": "135",
+              "sets": "3",
+              "reps": "4"
+            }
+          ,
+
+            "2": {
+              "name": "Tricep Kickbacks",
+              "weight": "35",
+              "sets": "3",
+              "reps": "8"
+            }
+          ,
+
+            "3": {
+              "name": "Skull Crushers",
+              "weight": "45",
+              "sets": "3",
+              "reps": "6"
+
+          }
+
+      }
+    },
+      {
+        "date": "8/17/19",
+        "excercises":
+          {
+            "0": {
+              "name": "Pushups",
+              "weight": "Body weight",
+              "sets": "4",
+              "reps": "15"
+            }
+          ,
+
+            "1": {
+              "name": "Bench Press",
+              "weight": "135",
+              "sets": "3",
+              "reps": "4"
+            }
+          ,
+
+            "2": {
+              "name": "Tricep Kickbacks",
+              "weight": "35",
+              "sets": "3",
+              "reps": "8"
+            }
+          ,
+
+            "3": {
+              "name": "Skull Crushed",
+              "weight": "45",
+              "sets": "3",
+              "reps": "6"
+            }
+          }
+
+      }
+    ]
+  }
+  }
