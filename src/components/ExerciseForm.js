@@ -20,10 +20,13 @@ export default function ExerciseForm(props) {
         item.weight !== ''
       );
     });
-    props.sendLog({
-      exercises: toSend,
-      date: dateRef.current.value
-    });
+    updateLogArr([]);
+    if (toSend.length > 0) {
+      props.sendLog({
+        exercises: toSend,
+        date: dateRef.current.value
+      });
+    }
   };
 
   let [ex, setEx] = useState('');
