@@ -8,31 +8,62 @@ export default function ExerciseForm(props) {
   const setsRef = React.createRef();
   const repsRef = React.createRef();
   const formRef = React.createRef();
-  const textRef = React.createRef();
   const dateRef = React.createRef();
+  const ref = React.createRef();
 
-  const sendOne = e => {
-    e.preventDefault();
-    props.sendLog(logArr);
+  const sendOne = () => {
+    addAnother();
+    const toSend = logArr.filter(item => {
+      return (
+        item.name !== '' &&
+        item.reps !== '' &&
+        item.sets !== '' &&
+        item.weight !== ''
+      );
+    });
+    console.log(toSend);
+    //props.sendLog(logArr);
   };
-  let [sel, setSelect] = useState(null);
+
+  let [ex, setEx] = useState('');
   let [logArr, updateLogArr] = useState([]);
 
-  const filterExercise = () => {
-    setSelect(textRef.current.value);
-  };
-
-  const exercises = props.exercises.filter(item => {
-    return sel ? item.toLowerCase().includes(sel.toLowerCase()) : true;
-  });
-
-  const opts = exercises.map(item => {
+  const opts = props.exercises.map(item => {
     return { value: item, label: item };
   });
+  console.log(ex);
 
-  const selectVariable = (
-    <Select options={opts} closeMenuOnSelect={false} ref={textRef} />
+  let selectVariable = (
+    <Select
+      options={opts}
+      onChange={val => setEx(val.value)}
+      value={[{ value: ex, label: ex }]}
+      closeMenuOnSelect={true}
+      ref={ref}
+      key={ex}
+    />
   );
+
+  if (ref.current) console.log(ref.current.state);
+
+  const addAnother = e => {
+    // e.preventDefault();
+    console.log(ref.current.state);
+
+    const log = {
+      name: ex,
+      reps: repsRef.current.value,
+      sets: setsRef.current.value,
+      weight: weightRef.current.value
+    };
+    formRef.current.reset();
+    setEx('');
+
+    // console.log(ref.current.state);
+
+    logArr.push(log);
+    updateLogArr(logArr);
+  };
 
   const variable = (
     <>
@@ -66,11 +97,13 @@ export default function ExerciseForm(props) {
         <form
           style={{ display: 'flex', flexDirection: 'column' }}
           ref={formRef}
-          onSubmit={sendOne}
+          // onSubmit={sendOne}
         >
           {variable}
         </form>
-        <button>Submit</button>
+        <button onClick={sendOne}>Post workout</button>
+
+        <button onClick={addAnother}>Add another exercise</button>
       </Modal>
     </>
   );

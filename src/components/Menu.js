@@ -6,7 +6,10 @@ import App from './App';
 const NavBar = styled.div`
   height: 100px;
   display: flex;
-  width: 100%;
+  padding-right: 100px;
+
+  justify-content: space-between;
+
   color: #fafafa;
   background: black;
 `;
