@@ -17,23 +17,29 @@ export default function Player(props) {
   return (
     <>
       <div>
-        <p> {props.name}</p>
-        <Link to={'/player/' + props.name}>See past history</Link>
-        <div>
-          <p>{entries[0].date}</p>
-          <ul>
-            {entries[0].exercises.map(item => {
-              return (
-                <li key={item.name + props.name}>
-                  {item.name}{' '}
-                  <span>
-                    {item.sets}x{item.reps}x{item.weight}
-                  </span>
-                </li>
-              );
-            })}
-          </ul>
-        </div>
+        <p>
+          <span> {props.name}</span>
+          <span>
+            <Link to={'/player/' + props.name}>See past history</Link>
+          </span>
+        </p>
+        {entries[0].exercises ? (
+          <div>
+            <p>{entries[0].date}</p>
+            <ul>
+              {entries[0].exercises.map(item => {
+                return (
+                  <li key={item.name + props.name}>
+                    {item.name}{' '}
+                    <span>
+                      {item.sets}x{item.reps}x{item.weight}
+                    </span>
+                  </li>
+                );
+              })}
+            </ul>
+          </div>
+        ) : null}
       </div>
     </>
   );

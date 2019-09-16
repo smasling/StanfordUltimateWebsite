@@ -18,23 +18,25 @@ export default function PlayerData(props) {
   });
 
   const exercises = entries.map(ent => {
-    return (
-      <div key={h.name + ent.date}>
-        <p>{ent.date}</p>
-        <ul>
-          {ent.exercises.map(item => {
-            return (
-              <li key={item.sets * Math.random()}>
-                {item.name}
-                <span>
-                  {item.sets}x{item.reps}x{item.weight}
-                </span>
-              </li>
-            );
-          })}
-        </ul>
-      </div>
-    );
+    if (ent.exercises) {
+      return (
+        <div key={h.name + ent.date}>
+          <p>{ent.date}</p>
+          <ul>
+            {ent.exercises.map(item => {
+              return (
+                <li key={item.sets * Math.random()}>
+                  {item.name}
+                  <span>
+                    {item.sets}x{item.reps}x{item.weight}
+                  </span>
+                </li>
+              );
+            })}
+          </ul>
+        </div>
+      );
+    }
   });
 
   return (
@@ -43,7 +45,7 @@ export default function PlayerData(props) {
         exercises={props.exercises}
         data={props.data}
         addLog={props.addLog}
-        name={h.name}
+        name={props.match.params.name}
       ></AddWorkout>
       <div>{props.match.params.name}</div>
       <div>{exercises}</div>

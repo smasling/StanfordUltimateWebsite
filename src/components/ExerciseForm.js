@@ -3,7 +3,6 @@ import { Modal, Scrim } from './styles';
 import Select from 'react-select';
 
 export default function ExerciseForm(props) {
-  const exerciseRef = React.createRef();
   const weightRef = React.createRef();
   const setsRef = React.createRef();
   const repsRef = React.createRef();
@@ -21,8 +20,10 @@ export default function ExerciseForm(props) {
         item.weight !== ''
       );
     });
-    console.log(toSend);
-    //props.sendLog(logArr);
+    props.sendLog({
+      exercises: toSend,
+      date: dateRef.current.value
+    });
   };
 
   let [ex, setEx] = useState('');
@@ -31,7 +32,6 @@ export default function ExerciseForm(props) {
   const opts = props.exercises.map(item => {
     return { value: item, label: item };
   });
-  console.log(ex);
 
   let selectVariable = (
     <Select
@@ -44,12 +44,7 @@ export default function ExerciseForm(props) {
     />
   );
 
-  if (ref.current) console.log(ref.current.state);
-
   const addAnother = e => {
-    // e.preventDefault();
-    console.log(ref.current.state);
-
     const log = {
       name: ex,
       reps: repsRef.current.value,
@@ -58,8 +53,6 @@ export default function ExerciseForm(props) {
     };
     formRef.current.reset();
     setEx('');
-
-    // console.log(ref.current.state);
 
     logArr.push(log);
     updateLogArr(logArr);
@@ -97,7 +90,6 @@ export default function ExerciseForm(props) {
         <form
           style={{ display: 'flex', flexDirection: 'column' }}
           ref={formRef}
-          // onSubmit={sendOne}
         >
           {variable}
         </form>

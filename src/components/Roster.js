@@ -1,17 +1,17 @@
 import React from 'react';
 
 export default function Roster(props) {
+  console.log(props);
+  const names = props.roster
+    .sort((a, b) => {
+      return a.split(' ')[1].localeCompare(b.split(' ')[1]);
+    })
+    .map(item => {
+      return <li key={item}>{item}</li>;
+    });
   return (
     <div>
-      <ul>
-        <li>Sam Masling</li>
-        <li>Kevin Tien</li>
-        <li>Nick Hirning</li>
-        <li>David Mondry</li>
-        <li>Phillip Cathers</li>
-        <li>Sergio Licon</li>
-        <li>Ryan Ressemeyer</li>
-      </ul>
+      <ul>{names}</ul>
     </div>
   );
 }

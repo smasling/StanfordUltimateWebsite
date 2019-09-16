@@ -3,6 +3,7 @@ import ExerciseForm from './ExerciseForm';
 
 export default function AddWorkout(props) {
   const [button, setButton] = useState(false);
+
   const sendLog = function(item) {
     let temp = props.data;
     temp[props.name]['entries'].push({

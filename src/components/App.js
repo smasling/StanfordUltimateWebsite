@@ -17,7 +17,8 @@ class App extends React.Component {
   state = {
     workoutLog: {},
     wolt: {},
-    exercises: []
+    exercises: [],
+    roster: []
   };
 
   componentDidMount() {
@@ -44,6 +45,10 @@ class App extends React.Component {
       context: this,
       state: 'exercises'
     });
+    base.syncState('/people', {
+      context: this,
+      state: 'roster'
+    });
   }
 
   addExercise = exercise => {
@@ -61,8 +66,13 @@ class App extends React.Component {
   };
 
   render() {
+    console.log('ohhhh');
+    console.log(this.state.wolt);
     const woltProps = {
       data: this.state.wolt
+    };
+    const rosterProps = {
+      roster: this.state.roster
     };
     const playerProps = {
       data: this.state.wolt,
@@ -78,7 +88,10 @@ class App extends React.Component {
             <Div> Bloodthirsty Website</Div>
             <Menu />
             <Switch>
-              <Route path="/roster" render={props => <Roster {...props} />} />
+              <Route
+                path="/roster"
+                render={props => <Roster {...rosterProps} {...props} />}
+              />
               <Route
                 path="/workout"
                 render={props => <Wolt {...props} {...woltProps} />}
