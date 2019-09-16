@@ -11,8 +11,12 @@ export default function ExerciseForm(props) {
   const textRef = React.createRef();
   const dateRef = React.createRef();
 
-  const sendOne = () => {};
+  const sendOne = e => {
+    e.preventDefault();
+    props.sendLog(logArr);
+  };
   let [sel, setSelect] = useState(null);
+  let [logArr, updateLogArr] = useState([]);
 
   const filterExercise = () => {
     setSelect(textRef.current.value);
