@@ -27,6 +27,7 @@ export default function ExerciseForm(props) {
         date: dateRef.current.value
       });
     }
+    props.close();
   };
 
   let [ex, setEx] = useState('');

@@ -26,7 +26,7 @@ export default function PlayerData(props) {
             {ent.exercises.map(item => {
               return (
                 <li key={item.sets * Math.random()}>
-                  {item.name}
+                  {item.name}{' '}
                   <span>
                     {item.sets}x{item.reps}x{item.weight}
                   </span>
