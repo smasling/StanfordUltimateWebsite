@@ -21,7 +21,6 @@ export default function AddWorkout(props) {
         reset={reset}
         exercises={props.exercises}
         sendLog={sendLog}
-        close={() => setButton(false)}
       />
     );
   } else {

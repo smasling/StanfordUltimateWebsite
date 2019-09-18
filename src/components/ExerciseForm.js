@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Modal, Scrim } from './styles';
+import { Modal, Scrim, Form } from './styles';
 import Select from 'react-select';
 
 export default function ExerciseForm(props) {
@@ -10,7 +10,8 @@ export default function ExerciseForm(props) {
   const dateRef = React.createRef();
   const ref = React.createRef();
 
-  const sendOne = () => {
+  const sendOne = e => {
+    e.preventDefault();
     addAnother();
     const toSend = logArr.filter(item => {
       return (
@@ -27,7 +28,7 @@ export default function ExerciseForm(props) {
         date: dateRef.current.value
       });
     }
-    props.close();
+    props.reset();
   };
 
   let [ex, setEx] = useState('');
@@ -36,17 +37,6 @@ export default function ExerciseForm(props) {
   const opts = props.exercises.map(item => {
     return { value: item, label: item };
   });
-
-  let selectVariable = (
-    <Select
-      options={opts}
-      onChange={val => setEx(val.value)}
-      value={[{ value: ex, label: ex }]}
-      closeMenuOnSelect={true}
-      ref={ref}
-      key={ex}
-    />
-  );
 
   const addAnother = e => {
     const log = {
@@ -62,42 +52,57 @@ export default function ExerciseForm(props) {
     updateLogArr(logArr);
   };
 
+  const close = () => {
+    formRef.current.reset();
+    setEx('');
+    props.reset();
+  };
+
   const variable = (
     <>
       <label>
         Exercise Name
-        {selectVariable}
+        <Select
+          options={opts}
+          onChange={val => setEx(val.value)}
+          value={[{ value: ex, label: ex }]}
+          closeMenuOnSelect={true}
+          ref={ref}
+          key={ex}
+          styles={{ width: '800px' }}
+        />
       </label>
       <label>
         Weight
-        <input ref={weightRef} type="text" />
+        <input required ref={weightRef} type="text" />
       </label>
       <label>
         Sets
-        <input ref={setsRef} type="text" />
+        <input required ref={setsRef} type="text" />
       </label>
       <label>
         Reps
-        <input ref={repsRef} type="text" />
+        <input required ref={repsRef} type="text" />
       </label>
     </>
   );
 
   return (
     <>
-      <Scrim onClick={props.reset} />
+      <Scrim onClick={close} />
       <Modal>
         <label>
           Date
           <input ref={dateRef} type="date" />
         </label>
-        <form
+        <Form
           style={{ display: 'flex', flexDirection: 'column' }}
           ref={formRef}
+          onSubmit={sendOne}
         >
           {variable}
-        </form>
-        <button onClick={sendOne}>Post workout</button>
+          <button type="submit">Post workout</button>
+        </Form>
 
         <button onClick={addAnother}>Add another exercise</button>
       </Modal>

@@ -4,10 +4,13 @@ export const Modal = styled.div`
   position: fixed;
   height: 40vw;
   width: 40%;
-  background: blue;
+  background: #fafafa;
   right: 30%;
   left: 30%;
   z-index: 10;
+  button :nth-of-type(2) {
+    background: blue;
+  }
 `;
 
 export const Scrim = styled.div`
@@ -19,4 +22,15 @@ export const Scrim = styled.div`
   z-index: 0;
   background: black;
   opacity: 0.2;
+`;
+
+export const Form = styled.form`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding-left: 5%;
+  label {
+    margin-top: 20px;
+  }
+  width: 100%;
 `;
